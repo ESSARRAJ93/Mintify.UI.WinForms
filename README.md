@@ -11,7 +11,7 @@
   ![Build](https://img.shields.io/github/checks-status/ESSARRAJ93/Mintify.UI.WinForms/master?style=for-the-badge&logo=github&logoColor=%23181717&label=Build&labelColor=%23FFF&color=orange)
   ![Platform](https://img.shields.io/badge/Platform-Windows_Forms-blue?style=for-the-badge&logo=dotnet&logoColor=%23512BD4&labelColor=%23FFF)
   ![Framework](https://img.shields.io/badge/Framework-4.7.2_+-blueviolet?style=for-the-badge&logo=dotnet&logoColor=%23512BD4&labelColor=%23FFF)
-  ![GitHub License](https://img.shields.io/github/license/ESSARRAJ93/Mintify.UI?style=for-the-badge&logo=github&logoColor=%23181717&labelColor=%23FFF)
+  ![GitHub License](https://img.shields.io/github/license/ESSARRAJ93/Mintify.UI.WinForms?style=for-the-badge&logo=github&logoColor=%23181717&labelColor=%23FFF)
 
 </div>
 
@@ -52,3 +52,18 @@ Install-Package Mintify.UI.WinForms
 
 ## 📜 License
 This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
+
+<br/>
+
+## 🧩 Components Overview
+
+This table provides an overview of the current components, their support status, and a brief description of their functionality.
+
+
+| Component             | Description                                            | Support     | Status      |
+|-----------------------|--------------------------------------------------------|-------------|-------------|
+| `ThemeProvider`       | A component to select between dark or light theme.     | Yes         | ✅ Pass     |
+| `Label`               | A label for describing or labeling a text field.       | Yes         | ✅ Pass     |
+| `TextBox`             | A Textbox field for user entred text.                  | Yes         | 🔧 Progress |
+| `More...`             | More components are coming for next days.              | No          | ⏳ Pending  | 
+
