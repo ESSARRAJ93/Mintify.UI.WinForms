@@ -16,12 +16,12 @@ namespace Mintify.UI.WinForms.Demo
             if(MntThemeProvider.Theme == Schemes.ThemeMode.Dark)
             {
                 CkdThemeMode.Checked = true;
-                LblTheme.Text = "Dark Theme";
+                MntMode.Text = "Dark Theme";
             }
             else
             {
                 CkdThemeMode.Checked = false;
-                LblTheme.Text = "Light Theme";
+                MntMode.Text = "Light Theme";
             }
         }
 
@@ -33,14 +33,19 @@ namespace Mintify.UI.WinForms.Demo
             {
                 MntThemeProvider.Theme = Schemes.ThemeMode.Dark;
                 MntThemeProvider.SavePreference();
-                LblTheme.Text = "Dark Theme";
+                MntMode.Text = "Dark Theme";
             }
             else
             {
                 MntThemeProvider.Theme = Schemes.ThemeMode.Light;
                 MntThemeProvider.SavePreference();
-                LblTheme.Text = "Light Theme";
+                MntMode.Text = "Light Theme";
             }
+        }
+
+        private void MntMode_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

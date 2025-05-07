@@ -30,8 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,6 +51,9 @@
       <DependentUpon>MintThemeProvider.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\MintControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MintLabel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Helpers\MintControlDesigner.cs" />

@@ -5,6 +5,8 @@ using Mintify.UI.WinForms.Helpers;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using Mintify.UI.WinForms.Components;
+using Mintify.UI.WinForms.Schemes;
 
 namespace Mintify.UI.WinForms.Controls
 {
@@ -20,9 +22,8 @@ namespace Mintify.UI.WinForms.Controls
         private int borderThickness;
 
         /* ** colors fields ** */
-        private Color foreColor = Color.Black;
-        private Color backColor = Color.Green;
         private Color borderColor = Color.Black;
+        private MintThemeProvider _provider;
 
         #endregion
 
@@ -46,8 +47,8 @@ namespace Mintify.UI.WinForms.Controls
             get => borderRadius;
             set
             {
-                int maxRadius = Math.Min(Height, Width);
-                borderRadius = Math.Max(0, Math.Min(value, maxRadius));
+                //int maxRadius = Math.Min(Height, Width);
+                borderRadius = value;
                 Invalidate(); // Redraw the control when border radius changes
             }
         }
@@ -55,7 +56,7 @@ namespace Mintify.UI.WinForms.Controls
         /* ** colors properties ** */
         public override Color ForeColor 
         { 
-            get => base.ForeColor; 
+            get => GetThemeColor(theme => theme.ForeColor, base.ForeColor); 
             set {
                 base.ForeColor = value;
                 Invalidate();
@@ -64,7 +65,7 @@ namespace Mintify.UI.WinForms.Controls
 
         public override Color BackColor
         {
-            get => base.BackColor;
+            get => GetThemeColor(theme => theme.BackColor, base.BackColor);
             set
             {
                 base.BackColor = value;
@@ -75,7 +76,7 @@ namespace Mintify.UI.WinForms.Controls
         [Category("Appearance")]
         public Color BorderColor
         {
-            get => borderColor;
+            get => GetThemeColor(theme => theme.BorderColor, borderColor);
             set
             {
                 borderColor = value;
@@ -106,91 +107,27 @@ namespace Mintify.UI.WinForms.Controls
             }
         }
 
+        public MintThemeProvider ThemeProvider
+        {
+            get => _provider;
+            set
+            {
+                _provider = value;
+                Invalidate(); // Redraw the control when theme provider changes
+            }
+        }
+
         #endregion
 
         #region *** constructors ***
         public MintControl()
         {
-            SetStyle(
-            ControlStyles.UserPaint |
-            ControlStyles.AllPaintingInWmPaint |
-            ControlStyles.OptimizedDoubleBuffer |
-            ControlStyles.ResizeRedraw |
-            ControlStyles.SupportsTransparentBackColor, true);
-            UpdateStyles();
-            DoubleBuffered = true;
-
-            Size = new Size(100, 30);
-            Text = Name;
-
-            Debug.WriteLine($"Text: '{Text}'");
         }
         #endregion
 
         #region *** methods ***
 
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-
-            // Ensure the border radius does not exceed the control's height
-            if (borderRadius > Height)
-                BorderRadius = Height;
-
-            UpdateMinHeight(); // Update minimum height based on text and padding
-            Invalidate(); // Redraw the control when resized
-
-        }
-
-        protected override void OnFontChanged(EventArgs e)
-        {
-            base.OnFontChanged(e);
-
-            UpdateMinHeight(); // Update minimum height based on font change
-            Invalidate(); // Redraw the control when font changes
-        }
-
-        protected override void OnPaddingChanged(EventArgs e)
-        {
-            base.OnPaddingChanged(e);
-
-            UpdateMinHeight(); // Update minimum height based on padding change
-            Invalidate(); // Redraw the control when padding changes
-        }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            g.SmoothingMode = SmoothingMode.HighQuality;
-            g.Clear(Parent.BackColor);
-
-            Rectangle rect = new Rectangle(0,0, Width - 1, Height - 1);
-            int offset = BorderThickness / 2;
-            int radius = BorderRadius - BorderThickness - 1;
-
-            rect.Inflate(-offset, -offset); // Adjust for border thickness
-
-            using (GraphicsPath path = MintDrawing.CreateRoundedRectangle(rect, radius))
-            {
-                // Fill background
-                using (SolidBrush brush = new SolidBrush(BackColor))
-                    g.FillPath(brush, path);
-
-                // Draw border
-                if (BorderThickness >= 1)
-                {
-                    using (Pen pen = new Pen(BorderColor, BorderThickness))
-                        g.DrawPath(pen, path);
-                }
-
-            }
-            Rectangle txtRect = Rectangle.Inflate(rect, -Padding.Horizontal / 2, -Padding.Vertical / 2);
-
-            // Draw text
-            TextRenderer.DrawText(g, Text, Font, txtRect, ForeColor, GetTextFormatFlags(TextAlign));
-        }
-
-        private TextFormatFlags GetTextFormatFlags(ContentAlignment align)
+        public virtual TextFormatFlags GetTextFormatFlags(ContentAlignment align)
         {
             TextFormatFlags flags = TextFormatFlags.GlyphOverhangPadding;
 
@@ -231,15 +168,13 @@ namespace Mintify.UI.WinForms.Controls
             return flags;
         }
 
-        private void UpdateMinHeight()
+        protected virtual Color GetThemeColor(Func<MintSchemeHelper, Color> selector, Color fallback)
         {
-            // Calculate minimum height based on text + padding
-            var flags = GetTextFormatFlags(TextAlign);
-            var textSize = TextRenderer.MeasureText(Text, Font, new Size(Width, int.MaxValue), flags);
-
-            // Add vertical padding + margin
-            int minHeight = textSize.Height + Padding.Top + Padding.Bottom + 10;
-            MinimumSize = new Size(0, minHeight);
+            return ThemeProvider != null
+                ? (ThemeProvider.Theme == ThemeMode.Dark
+                    ? selector(ThemeProvider.DarkTheme)
+                    : selector(ThemeProvider.LightTheme))
+                : fallback;
         }
         #endregion
     }

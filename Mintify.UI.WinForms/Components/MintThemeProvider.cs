@@ -11,8 +11,8 @@ namespace Mintify.UI.WinForms.Components
         #region *** fields ***
         private Form _form;
         private ThemeMode _mode = ThemeMode.Light;
-        private MintSchemeHelper _light = new MintSchemeHelper() { BackColor = Color.FromArgb(248, 250, 252), ForeColor = Color.FromArgb(15, 23, 42) };
-        private MintSchemeHelper _dark = new MintSchemeHelper() { BackColor = Color.FromArgb(30, 41, 59), ForeColor = Color.White };
+        private MintSchemeHelper _light;
+        private MintSchemeHelper _dark;
         #endregion
 
         #region *** events ***
@@ -90,6 +90,26 @@ namespace Mintify.UI.WinForms.Components
         #region *** constructors ***
         public MintThemeProvider()
         {
+            LightTheme = new MintSchemeHelper() 
+            { 
+                BackColor = Color.FromArgb(248, 250, 252), 
+                ForeColor = Color.FromArgb(15, 23, 42),
+
+                TextColor = Color.FromArgb(15, 23, 42),
+                FillColor = Color.FromArgb(248, 250, 252),
+                BorderColor = Color.FromArgb(100, 116, 139),
+            };
+
+            DarkTheme = new MintSchemeHelper()
+            {
+                BackColor = Color.FromArgb(30, 41, 59),
+                ForeColor = Color.White,
+
+                TextColor = Color.FromArgb(15, 23, 42),
+                FillColor = Color.FromArgb(248, 250, 252),
+                BorderColor = Color.FromArgb(148, 163, 184),
+            };
+
             InitializeComponent();
         }
 
