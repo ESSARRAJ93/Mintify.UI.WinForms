@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Mintify.UI.WinForms.Helpers;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 
 namespace Mintify.UI.WinForms.Controls
 {
@@ -19,9 +20,9 @@ namespace Mintify.UI.WinForms.Controls
         private int borderThickness;
 
         /* ** colors fields ** */
-        private Color foreColor;
-        private Color backColor;
-        private Color borderColor;
+        private Color foreColor = Color.Black;
+        private Color backColor = Color.Green;
+        private Color borderColor = Color.Black;
 
         #endregion
 
@@ -52,22 +53,21 @@ namespace Mintify.UI.WinForms.Controls
         }
 
         /* ** colors properties ** */
-        public virtual new Color ForeColor
-        {
-            get => foreColor;
-            set
-            {
-                foreColor = value;
-                Invalidate(); // Redraw the control when foreground color changes
-            }
+        public override Color ForeColor 
+        { 
+            get => base.ForeColor; 
+            set {
+                base.ForeColor = value;
+                Invalidate();
+            } 
         }
 
-        public virtual new Color BackColor
+        public override Color BackColor
         {
-            get => backColor;
+            get => base.BackColor;
             set
             {
-                backColor = value;
+                base.BackColor = value;
                 Invalidate(); // Redraw the control when background color changes
             }
         }
@@ -96,12 +96,12 @@ namespace Mintify.UI.WinForms.Controls
             }
         }
 
-        public new virtual string Text
+        public override string Text
         {
-            get => _text;
+            get => base.Text;
             set
             {
-                _text = value;
+                base.Text = value;
                 Invalidate(); // Redraw the control when text changes
             }
         }
@@ -121,6 +121,9 @@ namespace Mintify.UI.WinForms.Controls
             DoubleBuffered = true;
 
             Size = new Size(100, 30);
+            Text = Name;
+
+            Debug.WriteLine($"Text: '{Text}'");
         }
         #endregion
 
@@ -159,7 +162,7 @@ namespace Mintify.UI.WinForms.Controls
         {
             Graphics g = e.Graphics;
             g.SmoothingMode = SmoothingMode.HighQuality;
-            g.Clear(Parent?.BackColor ?? SystemColors.Control);
+            g.Clear(Parent.BackColor);
 
             Rectangle rect = new Rectangle(0,0, Width - 1, Height - 1);
             int offset = BorderThickness / 2;
@@ -181,10 +184,10 @@ namespace Mintify.UI.WinForms.Controls
                 }
 
             }
-            Rectangle paddedRect = Rectangle.Inflate(rect, -Padding.Horizontal / 2, -Padding.Vertical / 2);
+            Rectangle txtRect = Rectangle.Inflate(rect, -Padding.Horizontal / 2, -Padding.Vertical / 2);
 
             // Draw text
-            TextRenderer.DrawText(g, Text, Font, paddedRect, ForeColor, GetTextFormatFlags(TextAlign));
+            TextRenderer.DrawText(g, Text, Font, txtRect, ForeColor, GetTextFormatFlags(TextAlign));
         }
 
         private TextFormatFlags GetTextFormatFlags(ContentAlignment align)
