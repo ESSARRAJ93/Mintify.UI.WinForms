@@ -8,7 +8,7 @@
 
 <div align="center">
   
-  ![Build](https://img.shields.io/badge/Build-Progress-orange?style=for-the-badge&logo=dotnet&logoColor=%23512BD4&labelColor=%23FFF)
+  ![Build](https://img.shields.io/github/checks-status/ESSARRAJ93/Mintify.UI.WinForms/master?style=for-the-badge&logo=github&logoColor=%23181717&label=Build&labelColor=%23FFF&color=orange)
   ![Platform](https://img.shields.io/badge/Platform-Windows_Forms-blue?style=for-the-badge&logo=dotnet&logoColor=%23512BD4&labelColor=%23FFF)
   ![Framework](https://img.shields.io/badge/Framework-4.7.2_+-blueviolet?style=for-the-badge&logo=dotnet&logoColor=%23512BD4&labelColor=%23FFF)
   ![GitHub License](https://img.shields.io/github/license/ESSARRAJ93/Mintify.UI?style=for-the-badge&logo=github&logoColor=%23181717&labelColor=%23FFF)
