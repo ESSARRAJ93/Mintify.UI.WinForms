@@ -52,3 +52,17 @@ Install-Package Mintify.UI.WinForms
 
 ## 📜 License
 This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
+
+<br/>
+
+## 🧩 Components Overview
+
+This table provides an overview of the current components, their support status, and a brief description of their functionality.
+
+
+| Component             | Description                                            | Support     | Status      |
+|-----------------------|--------------------------------------------------------|-------------|-------------|
+| `ThemeProvider`       | A component to select between dark or light theme.     | Yes         | ✅ Pass     |
+| `Label`               | A label for describing or labeling a text field.       | Yes         | 🔧 Progress |
+| `More...`             | More components are coming for next days.              | No          | ⏳ Pending  | 
+
