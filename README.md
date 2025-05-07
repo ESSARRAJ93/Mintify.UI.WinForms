@@ -1,3 +1,4 @@
+
 <div align="center">
   
   <img src="Assets/mintify.png" alt="Mintify UI Banner" style="max-width: 100%; height: auto;" />
