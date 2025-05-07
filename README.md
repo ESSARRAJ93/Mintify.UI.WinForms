@@ -63,6 +63,7 @@ This table provides an overview of the current components, their support status,
 | Component             | Description                                            | Support     | Status      |
 |-----------------------|--------------------------------------------------------|-------------|-------------|
 | `ThemeProvider`       | A component to select between dark or light theme.     | Yes         | ✅ Pass     |
-| `Label`               | A label for describing or labeling a text field.       | Yes         | 🔧 Progress |
+| `Label`               | A label for describing or labeling a text field.       | Yes         | ✅ Pass     |
+| `TextBox`             | A Textbox field for user entred text.                  | Yes         | 🔧 Progress |
 | `More...`             | More components are coming for next days.              | No          | ⏳ Pending  | 
 
