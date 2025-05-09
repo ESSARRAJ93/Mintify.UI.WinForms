@@ -1,21 +1,22 @@
-﻿using System.Drawing.Drawing2D;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
-using Mintify.UI.WinForms.Helpers;
 using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using Mintify.UI.WinForms.Components;
 using Mintify.UI.WinForms.Schemes;
 
+
 namespace Mintify.UI.WinForms.Controls
 {
+    [DesignerCategory("Code")]
     public class MintControl : Control
     {
         #region *** fields ***
 
-        private string _text;
+        private TargetScheme schemeFor = TargetScheme.Control;
         private ContentAlignment _textAlign = ContentAlignment.MiddleLeft;
+        
+        private MintThemeProvider _provider;
 
         /* ** integer fields ** */
         private int borderRadius;
@@ -23,7 +24,6 @@ namespace Mintify.UI.WinForms.Controls
 
         /* ** colors fields ** */
         private Color borderColor = Color.Black;
-        private MintThemeProvider _provider;
 
         #endregion
 
@@ -74,7 +74,7 @@ namespace Mintify.UI.WinForms.Controls
         }
 
         [Category("Appearance")]
-        public Color BorderColor
+        public virtual Color BorderColor
         {
             get => GetThemeColor(theme => theme.BorderColor, borderColor);
             set
@@ -107,6 +107,20 @@ namespace Mintify.UI.WinForms.Controls
             }
         }
 
+        /// <summary>
+        /// Gets or sets the <see cref="MintThemeProvider"/> associated with the control.
+        /// This property allows the control to apply a theme, such as colors and styles,
+        /// based on the provided <see cref="MintThemeProvider"/>.
+        /// </summary>
+        /// <value>
+        /// The <see cref="MintThemeProvider"/> instance that defines the theme for the control.
+        /// </value>
+        /// <remarks>
+        /// Setting this property triggers a redraw of the control to reflect any theme changes.
+        /// </remarks>
+        [Category("Behavior")]
+        [Description("Gets or sets the MintThemeProvider that defines the control's appearance.")]
+
         public MintThemeProvider ThemeProvider
         {
             get => _provider;
@@ -117,12 +131,14 @@ namespace Mintify.UI.WinForms.Controls
             }
         }
 
+        public virtual TargetScheme SchemeFor
+        {
+            get => schemeFor;
+        }
         #endregion
 
         #region *** constructors ***
-        public MintControl()
-        {
-        }
+        public MintControl() { }
         #endregion
 
         #region *** methods ***

@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using Mintify.UI.WinForms.Design;
 using Mintify.UI.WinForms.Helpers;
 
 namespace Mintify.UI.WinForms.Controls
@@ -41,7 +42,6 @@ namespace Mintify.UI.WinForms.Controls
                 ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw |
                 ControlStyles.SupportsTransparentBackColor, true
             );
-            //UpdateStyles();
 
 
             DoubleBuffered = true;

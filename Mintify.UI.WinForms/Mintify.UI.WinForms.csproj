@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,13 +51,10 @@
     <Compile Include="Components\MintThemeProvider.Designer.cs">
       <DependentUpon>MintThemeProvider.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\MintControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\MintLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Helpers\MintControlDesigner.cs" />
+    <Compile Include="Controls\MintControl.cs" />
+    <Compile Include="Controls\MintLabel.cs" />
+    <Compile Include="Controls\MintSwitch.cs" />
+    <Compile Include="Design\MintControlDesigner.cs" />
     <Compile Include="Helpers\MintDrawing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -69,6 +67,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Design\MintColor.cs" />
+    <Compile Include="Design\MintColorEditor.cs" />
+    <Compile Include="Design\MintSchemeConverter.cs" />
     <Compile Include="Schemes\MintSchemeHelper.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
@@ -85,5 +86,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,38 +14,28 @@ namespace Mintify.UI.WinForms.Demo
         {
             MntThemeProvider.LoadPreference();
             if(MntThemeProvider.Theme == Schemes.ThemeMode.Dark)
-            {
-                CkdThemeMode.Checked = true;
-                MntMode.Text = "Dark Theme";
-            }
-            else
-            {
-                CkdThemeMode.Checked = false;
-                MntMode.Text = "Light Theme";
-            }
-        }
+                MntSwitch.Checked = true;
+            else MntSwitch.Checked = false;
 
-        private void CkdThemeMode_CheckedChanged(object sender, EventArgs e)
-        {
-            //CkdThemeMode.Checked = !CkdThemeMode.Checked;
-            
-            if (CkdThemeMode.Checked)
-            {
-                MntThemeProvider.Theme = Schemes.ThemeMode.Dark;
-                MntThemeProvider.SavePreference();
-                MntMode.Text = "Dark Theme";
-            }
-            else
-            {
-                MntThemeProvider.Theme = Schemes.ThemeMode.Light;
-                MntThemeProvider.SavePreference();
-                MntMode.Text = "Light Theme";
-            }
         }
 
         private void MntMode_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void MntSwitch_CheckedChanged(object sender, EventArgs e)
+        {
+            if (MntSwitch.Checked == true)
+            {
+                MntThemeProvider.Theme = Schemes.ThemeMode.Dark;
+                MntThemeProvider.SavePreference();
+            }
+            else
+            {
+                MntThemeProvider.Theme = Schemes.ThemeMode.Light;
+                MntThemeProvider.SavePreference();
+            }
         }
     }
 }

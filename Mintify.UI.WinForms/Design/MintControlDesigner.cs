@@ -1,16 +1,19 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Drawing;
+using System.Drawing.Design;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 using Mintify.UI.WinForms.Controls;
+using Mintify.UI.WinForms.Schemes;
 
-namespace Mintify.UI.WinForms.Helpers
+namespace Mintify.UI.WinForms.Design
 {
     public class MintControlDesigner
     {
     }
 
+    #region *** LabelControlDesigner ***
     public class LabelControlDesigner : ControlDesigner
     {
         public override SelectionRules SelectionRules
@@ -172,4 +175,21 @@ namespace Mintify.UI.WinForms.Helpers
             }
         }
     }
+    #endregion
+
+    #region *** SwitchControlDesigner ***
+
+    public class SwitchControlDesigner : ControlDesigner
+    {
+        public override SelectionRules SelectionRules
+        {
+            get
+            {
+                if (Control is MintSwitch toggle && toggle.AutoSize)
+                    return SelectionRules.Moveable;
+                return base.SelectionRules;
+            }
+        }
+    }
+    #endregion
 }

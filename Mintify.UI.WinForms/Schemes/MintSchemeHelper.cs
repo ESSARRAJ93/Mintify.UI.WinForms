@@ -1,40 +1,60 @@
 ﻿using System.ComponentModel;
 using System.Drawing;
+using Mintify.UI.WinForms.Design;
+using System.Drawing.Design;
 
 namespace Mintify.UI.WinForms.Schemes
 {
-    [TypeConverter(typeof(ExpandableObjectConverter))]
+    [TypeConverter(typeof(MintSchemeConverter))]
     public class MintSchemeHelper
     {
+        public TargetScheme SchemeFor { get; set; } = TargetScheme.Control;
+
 
         [Category("Form Appearance")]
+        [TypeConverter(typeof(MintColorConverter))]
+        [Editor(typeof(MintColorEditor), typeof(UITypeEditor))]
         public Color ForeColor { get; set; }
-        
+
         [Category("Form Appearance")]
+        [TypeConverter(typeof(MintColorConverter))]
+        [Editor(typeof(MintColorEditor), typeof(UITypeEditor))]
         public Color BackColor { get; set; }
 
 
         [Category("Control Appearance")]
+        [TypeConverter(typeof(MintColorConverter))]
+        [Editor(typeof(MintColorEditor), typeof(UITypeEditor))]
         public Color TextColor { get; set; }
-        
+
         [Category("Control Appearance")]
+        [TypeConverter(typeof(MintColorConverter))]
+        [Editor(typeof(MintColorEditor), typeof(UITypeEditor))]
         public Color FillColor { get; set; }
-        
+
         [Category("Control Appearance")]
+        [TypeConverter(typeof(MintColorConverter))]
+        [Editor(typeof(MintColorEditor), typeof(UITypeEditor))]
         public Color BorderColor { get; set; }
 
-        public MintSchemeHelper()
+        public MintSchemeHelper() { }
+
+
+        public MintSchemeHelper(Color foreground, Color background)
         {
+            SchemeFor = TargetScheme.Form;
+            ForeColor = foreground;
+            BackColor = background;
+
         }
 
-        public MintSchemeHelper(Color background, Color foreground, Color border, Color fill, Color text)
+        public MintSchemeHelper(Color textColor, Color fillColor, Color borderColor)
         {
-            BackColor = background;
-            ForeColor = foreground;
+            SchemeFor = TargetScheme.Control;
+            TextColor = textColor;
+            FillColor = fillColor;
+            BorderColor = borderColor;
 
-            FillColor = fill;
-            TextColor = text;
-            BorderColor = border;
         }
 
     }
@@ -43,5 +63,11 @@ namespace Mintify.UI.WinForms.Schemes
     {
         Light,
         Dark
+    }
+
+    public enum TargetScheme
+    {
+        Form,
+        Control
     }
 }
