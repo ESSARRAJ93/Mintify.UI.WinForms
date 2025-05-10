@@ -68,6 +68,8 @@ This table provides an overview of the current components, their support status,
 | `Switch`              | A toggle component representing a binary state (on/off).             | Yes         | ✅ Pass     |
 | `TextBox`             | An input field that allows users to enter and edit text.             | Yes         | ✅ Pass     |
 | `Button`              | A clickable element used to trigger actions or events.               | Yes         | ✅ Pass     |
-| `Panel`               | A container used to group and layout other controls.                 | Yes         | 🔧 Progress |
+| `CheckBox`            | A box component that lets users select one or more options.          | Yes         | 🔧 Progress |
+| `RadioButton`         | A button that lets users select one option from a group.             | Yes         | 🔧 Progress |
+| `Panel`               | A container used to group and layout other controls.                 | Yes         | ⏳ Pending  |
 | `GroupBox`            | A container with a visible frame and optional label.                 | Yes         | ⏳ Pending  |
 | `More...`             | Additional components planned for upcoming releases.                 | No          | ⏳ Pending  | 
