@@ -61,13 +61,13 @@ This project is licensed under the MIT License – see the [LICENSE](LICENSE) fi
 This table provides an overview of the current components, their support status, and a brief description of their functionality.
 
 
-| Component             | Description                                            | Support     | Status      |
-|-----------------------|--------------------------------------------------------|-------------|-------------|
-| `ThemeProvider`       | A component to select between dark or light theme.     | Yes         | ✅ Pass     |
-| `Label`               | A label for describing or labeling a text field.       | Yes         | ✅ Pass     |
-| `Switch`              | A toggle switch allows states (checked/unchecked).     | Yes         | ✅ Pass     |
-| `TextBox`             | A Textbox field for user entred text.                  | Yes         | ✅ Pass     |
-| `Button`              | A Textbox field for user entred text.                  | Yes         | 🔧 Progress  |
-| `Panel`               | A Textbox field for user entred text.                  | Yes         | ⏳ Pending   |
-| `More...`             | More components are coming for next days.              | No          | ⏳ Pending  | 
-
+| Component             | Description                                                          | Support     | Status      |
+|-----------------------|----------------------------------------------------------------------|-------------|-------------|
+| `ThemeProvider`       | A component that manages and applies light or dark themes.           | Yes         | ✅ Pass     |
+| `Label`               | A simple text element used for titles, descriptions, or captions.    | Yes         | ✅ Pass     |
+| `Switch`              | A toggle component representing a binary state (on/off).             | Yes         | ✅ Pass     |
+| `TextBox`             | An input field that allows users to enter and edit text.             | Yes         | ✅ Pass     |
+| `Button`              | A clickable element used to trigger actions or events.               | Yes         | ✅ Pass     |
+| `Panel`               | A container used to group and layout other controls.                 | Yes         | 🔧 Progress |
+| `GroupBox`            | A container with a visible frame and optional label.                 | Yes         | ⏳ Pending  |
+| `More...`             | Additional components planned for upcoming releases.                 | No          | ⏳ Pending  | 
