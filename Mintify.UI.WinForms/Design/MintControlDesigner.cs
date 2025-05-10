@@ -192,4 +192,77 @@ namespace Mintify.UI.WinForms.Design
         }
     }
     #endregion
+
+
+    #region *** TextBoxControlDesigner ***
+    public class TextBoxControlDesigner : ControlDesigner
+    {
+        public override SelectionRules SelectionRules
+        {
+            get
+            {
+                if (Control is MintTextBox textBox && !textBox.Multiline)
+                    return SelectionRules.LeftSizeable | SelectionRules.RightSizeable | SelectionRules.Moveable;
+                return base.SelectionRules;
+            }
+        }
+
+        private DesignerActionListCollection actionLists;
+        public override DesignerActionListCollection ActionLists
+        {
+            get
+            {
+                if (actionLists == null)
+                {
+                    actionLists = new DesignerActionListCollection();
+                    actionLists.Add(new TextBoxActionList(this.Component));
+                }
+
+                return actionLists;
+            }
+        }
+
+        internal class TextBoxActionList : DesignerActionList
+        {
+            private MintTextBox textBox;
+
+            public TextBoxActionList(IComponent component) : base(component)
+            {
+                textBox = component as MintTextBox;
+            }
+
+            public bool Multiline
+            {
+                get => textBox.Multiline;
+                set
+                {
+                    SetProperty("Multiline", value);
+                    textBox.Invalidate();
+                }
+            }
+
+            private void SetProperty(string prop, object value)
+            {
+                PropertyDescriptor pd = TypeDescriptor.GetProperties(textBox)[prop];
+                pd.SetValue(textBox, value);
+            }
+
+            public override DesignerActionItemCollection GetSortedActionItems()
+            {
+                DesignerActionItemCollection items = new DesignerActionItemCollection();
+
+                items.Add(new DesignerActionPropertyItem
+                (
+                    "Multiline",
+                    "Multiline",
+                    "Options",
+                    "Enable multi-line editing"
+                ));
+                return items;
+            }
+        }
+    }
+
+    #endregion
+
 }

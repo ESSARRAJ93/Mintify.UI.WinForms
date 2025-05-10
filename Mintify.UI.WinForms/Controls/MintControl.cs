@@ -8,7 +8,6 @@ using Mintify.UI.WinForms.Schemes;
 
 namespace Mintify.UI.WinForms.Controls
 {
-    [DesignerCategory("Code")]
     public class MintControl : Control
     {
         #region *** fields ***
@@ -47,7 +46,8 @@ namespace Mintify.UI.WinForms.Controls
             get => borderRadius;
             set
             {
-                //int maxRadius = Math.Min(Height, Width);
+                if (value >= Height)
+                    value = Height; // Ensure border radius is non-negative
                 borderRadius = value;
                 Invalidate(); // Redraw the control when border radius changes
             }

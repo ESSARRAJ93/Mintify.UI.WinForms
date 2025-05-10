@@ -24,6 +24,20 @@ namespace Mintify.UI.WinForms.Design
         public static Color Mint900 => ColorTranslator.FromHtml("#1D533F");
         #endregion
 
+        /* ** Gray Color */
+        #region *** Gray ***
+        public static Color Gray50 => ColorTranslator.FromHtml("#F5F5F5");
+        public static Color Gray100 => ColorTranslator.FromHtml("#EDEDED");
+        public static Color Gray200 => ColorTranslator.FromHtml("#D9D9D9");
+        public static Color Gray300 => ColorTranslator.FromHtml("#BFBFBF");
+        public static Color Gray400 => ColorTranslator.FromHtml("#A3A3A3");
+        public static Color Gray500 => ColorTranslator.FromHtml("#808080");
+        public static Color Gray600 => ColorTranslator.FromHtml("#737373");
+        public static Color Gray700 => ColorTranslator.FromHtml("#666666");
+        public static Color Gray800 => ColorTranslator.FromHtml("#545454");
+        public static Color Gray900 => ColorTranslator.FromHtml("#383838");
+        #endregion
+
         #endregion
 
         #region ## colors dictionary ##
@@ -46,6 +60,19 @@ namespace Mintify.UI.WinForms.Design
             { "Mint700", Mint700 },
             { "Mint800", Mint800 },
             { "Mint900", Mint900 },
+            #endregion
+
+            #region *** Gray Colors ***
+            { "Gray50", Gray50 },
+            { "Gray100", Gray100 },
+            { "Gray200", Gray200 },
+            { "Gray300", Gray300 },
+            { "Gray400", Gray400 },
+            { "Gray500", Gray500 },
+            { "Gray600", Gray600 },
+            { "Gray700", Gray700 },
+            { "Gray800", Gray800 },
+            { "Gray900", Gray900 },
             #endregion
 
         };

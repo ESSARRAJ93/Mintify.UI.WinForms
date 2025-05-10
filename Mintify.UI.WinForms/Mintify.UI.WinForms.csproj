@@ -51,9 +51,18 @@
     <Compile Include="Components\MintThemeProvider.Designer.cs">
       <DependentUpon>MintThemeProvider.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\MintControl.cs" />
-    <Compile Include="Controls\MintLabel.cs" />
-    <Compile Include="Controls\MintSwitch.cs" />
+    <Compile Include="Controls\MintControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MintLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MintSwitch.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MintTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Design\MintControlDesigner.cs" />
     <Compile Include="Helpers\MintDrawing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

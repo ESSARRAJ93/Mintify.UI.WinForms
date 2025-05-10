@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Mintify.UI.WinForms.Controls;
 
 namespace Mintify.UI.WinForms.Demo
 {
@@ -35,6 +36,31 @@ namespace Mintify.UI.WinForms.Demo
             {
                 MntThemeProvider.Theme = Schemes.ThemeMode.Light;
                 MntThemeProvider.SavePreference();
+            }
+        }
+
+        private void mintTextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void mintTextBox1_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                mintTextBox2.Focus();
+                mintTextBox2.Text = "Enter key pressed!";
+                e.SuppressKeyPress = true; // Prevents the beep sound
+            }
+        }
+
+        private void mintTextBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                mintTextBox1.Focus();
+                mintTextBox1.Text = "Enter key pressed!";
+                e.SuppressKeyPress = true; // Prevents the beep sound
             }
         }
     }
