@@ -138,7 +138,10 @@ namespace Mintify.UI.WinForms.Controls
         #endregion
 
         #region *** constructors ***
-        public MintControl() { }
+        public MintControl() 
+        {
+
+        }
         #endregion
 
         #region *** methods ***

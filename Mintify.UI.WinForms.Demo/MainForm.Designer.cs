@@ -54,6 +54,7 @@
             this.MntLight = new Mintify.UI.WinForms.Controls.MintLabel();
             this.MntSwitch = new Mintify.UI.WinForms.Controls.MintSwitch();
             this.MntThemeProvider = new Mintify.UI.WinForms.Components.MintThemeProvider(this.components);
+            this.mintButton1 = new Mintify.UI.WinForms.Controls.MintButton();
             this.SuspendLayout();
             // 
             // mintTextBox3
@@ -278,11 +279,27 @@
             this.MntThemeProvider.TargetForm = this;
             this.MntThemeProvider.Theme = Mintify.UI.WinForms.Schemes.ThemeMode.Light;
             // 
+            // mintButton1
+            // 
+            this.mintButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(180)))), ((int)(((byte)(137)))));
+            this.mintButton1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(180)))), ((int)(((byte)(137)))));
+            this.mintButton1.BorderRadius = 29;
+            this.mintButton1.BorderThickness = 0;
+            this.mintButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.mintButton1.Location = new System.Drawing.Point(454, 163);
+            this.mintButton1.Name = "mintButton1";
+            this.mintButton1.Size = new System.Drawing.Size(100, 30);
+            this.mintButton1.TabIndex = 7;
+            this.mintButton1.Text = "mintButton1";
+            this.mintButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mintButton1.ThemeProvider = null;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.mintButton1);
             this.Controls.Add(this.mintTextBox3);
             this.Controls.Add(this.mintTextBox2);
             this.Controls.Add(this.mintTextBox1);
@@ -306,5 +323,6 @@
         private Controls.MintTextBox mintTextBox3;
         private Controls.MintTextBox mintTextBox2;
         private Controls.MintTextBox mintTextBox1;
+        private Controls.MintButton mintButton1;
     }
 }

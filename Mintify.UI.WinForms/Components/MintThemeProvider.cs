@@ -135,7 +135,14 @@ namespace Mintify.UI.WinForms.Components
                 _form.BackColor = theme.BackColor;
                 _form.ForeColor = theme.ForeColor;
                 _form.Invalidate();
+
+                foreach (Control control in _form.Controls)
+                {
+                    control.Invalidate();
+                }
             }
+
+
 
             ThemeChanged?.Invoke(this, EventArgs.Empty);
 
